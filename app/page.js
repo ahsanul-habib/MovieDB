@@ -7,6 +7,8 @@ import MovieCarousel from "./components/MovieCarousel";
 import Hero from "./components/Hero";
 import { getRandomNumber } from "@/utils/getRandomNumber";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const trendingMoviesPromise = getTrendingMovies();
   const popularMoviesPromise = await getPopularMovies();
