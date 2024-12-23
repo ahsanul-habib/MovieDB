@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import SimilarMovies from "./SimilarMovies";
 import SkeletonTrendingMovies from "./SkeletonSimilarMovies";
 
-export async function generateMetaData({ params }) {
+export async function generateMetadata({ params }) {
   const { movieID } = params;
   const movie = await getMovieDetails(movieID);
 
