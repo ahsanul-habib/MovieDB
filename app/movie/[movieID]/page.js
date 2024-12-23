@@ -6,24 +6,20 @@ import SimilarMovies from "./SimilarMovies";
 import SkeletonTrendingMovies from "./SkeletonSimilarMovies";
 
 export async function generateMetaData({ params }) {
-  const { movieID } = await params;
+  const { movieID } = params;
   const movie = await getMovieDetails(movieID);
 
-  if (!movie) {
-    return {
-      title: "Movie not found!",
-      description: "Movie not found!",
-    };
-  }
-
   return {
-    title: movie?.title,
-    description: movie?.overview,
+    title: movie?.title || "Movie not found!",
+    description: movie?.overview || "No description available.",
     openGraph: {
-      images: [`https://image.tmdb.org/t/p/original${movie.poster_path}`],
+      images: movie?.poster_path
+        ? [`https://image.tmdb.org/t/p/original${movie.poster_path}`]
+        : [],
     },
   };
 }
+
 
 const page = async ({ params }) => {
   const { movieID } = params;

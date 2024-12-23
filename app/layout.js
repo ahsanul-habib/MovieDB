@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "LWS Xstreme",
-  description: "A video site to watchgi",
+  title: "MovieDB App",
+  description: "A site to get movie details",
 };
 
 export default function RootLayout({ children }) {
