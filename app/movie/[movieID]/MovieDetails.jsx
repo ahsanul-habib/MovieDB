@@ -2,6 +2,7 @@ import { getMovieCastDetails } from "@/actions/movies";
 import getFormattedDate from "@/utils/getFormattedDate";
 import Image from "next/image";
 import AddToWatchButton from "./AddToWatchButton";
+import SocialButtons from "./SocialButtons";
 
 const MovieDetails = async ({ movie }) => {
   const movieCastDetails = await getMovieCastDetails(movie.id);
@@ -79,36 +80,7 @@ const MovieDetails = async ({ movie }) => {
               <div className="mb-6">
                 <h3 className="text-gray-400 mb-2">Share on social media</h3>
                 <div className="flex flex-wrap gap-4">
-                  <button className="text-center cursor-pointer">
-                    <Image
-                      height={32}
-                      width={32}
-                      src="http://facebook.com/favicon.ico"
-                      alt="Facebook"
-                      className="w-8 h-8 rounded-full object-cover mb-2 mx-auto"
-                      />
-                    <p className="text-sm">Facebook</p>
-                  </button>
-                  <button className="text-center cursor-pointer">
-                    <Image
-                      height={32}
-                      width={32}
-                      src="http://x.com/favicon.ico"
-                      alt="Facebook"
-                      className="w-8 h-8 rounded-full object-cover mb-2 mx-auto"
-                    />
-                    <p className="text-sm">X</p>
-                  </button>
-                  <button className="text-center cursor-pointer">
-                    <Image
-                      height={32}
-                      width={32}
-                      src="http://linkedin.com/favicon.ico"
-                      alt="Facebook"
-                      className="w-8 h-8 rounded-full object-cover mb-2 mx-auto"
-                    />
-                    <p className="text-sm">Linkedin</p>
-                  </button>
+                  <SocialButtons />
                 </div>
               </div>
             </div>

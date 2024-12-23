@@ -26,12 +26,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}
       >
-
         <AuthProvider>
-          <NavBar/>
+          <NavBar />
           {children}
         </AuthProvider>
-        <ToastContainer/>
+        <ToastContainer autoClose={2000} />
       </body>
     </html>
   );
