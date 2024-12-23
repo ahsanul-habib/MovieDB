@@ -4,7 +4,7 @@ import Image from "next/image";
 import AddToWatchButton from "./AddToWatchButton";
 
 const MovieDetails = async ({ movie }) => {
-    const movieCastDetails=await getMovieCastDetails(movie.id);
+  const movieCastDetails = await getMovieCastDetails(movie.id);
   return (
     <div id="movieDetails" className="min-h-screen mb-8">
       <div className="relative h-screen">
@@ -22,8 +22,12 @@ const MovieDetails = async ({ movie }) => {
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/3">
               <Image
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                width={500}
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                    : "/placeholder.jpg"
+                }
+                width={400}
                 height={600}
                 alt="Smile 2"
                 className="rounded-lg shadow-lg h-[600px]"
@@ -55,25 +59,22 @@ const MovieDetails = async ({ movie }) => {
               <div className="mb-6">
                 <h3 className="text-gray-400 mb-2">Cast</h3>
                 <div className="flex flex-wrap gap-4">
-                  {
-                    movieCastDetails.cast.slice(0,6).map((cast)=>(
-
-                  <div className="text-center" key={cast.id}>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${cast.profile_path}`}
-                      width={50}
-                      height={50}
-                      alt={cast.name}
-                      className="w-24 h-24 rounded-full object-cover mb-2"
-                    />
-                    <p className="text-sm">{cast.name}</p>
-                  </div>
-                    ))
-                  }
+                  {movieCastDetails.cast.slice(0, 6).map((cast) => (
+                    <div className="text-center" key={cast.id}>
+                      <Image
+                        src={`https://image.tmdb.org/t/p/original${cast.profile_path}`}
+                        width={50}
+                        height={50}
+                        alt={cast.name}
+                        className="w-24 h-24 rounded-full object-cover mb-2"
+                      />
+                      <p className="text-sm">{cast.name}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="mb-6">
-                <AddToWatchButton movie={movie} movieID={movie.id}/>
+                <AddToWatchButton movie={movie} movieID={movie.id} />
               </div>
               <div className="mb-6">
                 <h3 className="text-gray-400 mb-2">Share on social media</h3>

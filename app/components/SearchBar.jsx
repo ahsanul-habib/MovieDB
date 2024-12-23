@@ -1,9 +1,9 @@
 "use client";
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
-const SearchBar = () => {
+const SearchBarContent = () => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
@@ -22,7 +22,6 @@ const SearchBar = () => {
     setSearchTerm(value);
 
     if (!value.trim()) {
-      // Go back to the previous URL if search is cleared
       router.replace(previousURL || "/");
     } else {
       router.replace(`/movie/search?query=${value}`);
@@ -44,6 +43,14 @@ const SearchBar = () => {
         className="absolute w-full mt-2 bg-black bg-opacity-90 rounded-lg hidden"
       />
     </div>
+  );
+};
+
+const SearchBar = () => {
+  return (
+    <Suspense fallback={<div>Loading search...</div>}>
+      <SearchBarContent />
+    </Suspense>
   );
 };
 

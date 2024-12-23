@@ -8,9 +8,11 @@ import Hero from "./components/Hero";
 import { getRandomNumber } from "@/utils/getRandomNumber";
 
 export default async function Home() {
-  const trendingMovies = await getTrendingMovies();
-  const popularMovies = await getPopularMovies();
-  const topRatedMovies = await getTopRatedMovies();
+  const trendingMoviesPromise = getTrendingMovies();
+  const popularMoviesPromise = await getPopularMovies();
+  const topRatedMoviesPromise = await getTopRatedMovies();
+
+  const [trendingMovies, popularMovies, topRatedMovies] = await Promise.all([trendingMoviesPromise, popularMoviesPromise, topRatedMoviesPromise]);
 
   return (
     <div>

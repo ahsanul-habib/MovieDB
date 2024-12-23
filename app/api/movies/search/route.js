@@ -13,7 +13,7 @@ export async function GET(request){
 
     if(movieData.status===200){
         const data=await movieData.json();
-        return Response.json(data.results);
+        return Response.json(data);
     }
 
     else{

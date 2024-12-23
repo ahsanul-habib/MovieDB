@@ -1,6 +1,5 @@
 export async function GET(request,{params}){
     const {movieID}=await params;
-    // console.log(JSON.stringify(movieID));
     const url = `https://api.themoviedb.org/3/movie/${movieID}`;
     const options = {
     method: 'GET',
@@ -15,7 +14,6 @@ export async function GET(request,{params}){
     
     if(movieData.status===200){
         const data=await movieData.json();
-        console.log(data);
         return Response.json(data);
     }
 

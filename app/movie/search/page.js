@@ -10,12 +10,13 @@ const SearchPage = () => {
   const query = searchParams.get("query");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  console.log(movies);
   useEffect(() => {
     const fetchMovies = async () => {
       if (!query) return;
       setLoading(true);
-      const data = await getSearchResult(query);
+      const response = await fetch(`/api/movies/search?query=${query}`);
+      const data=await response.json();
       setMovies(data.results || []);
       setLoading(false);
     };

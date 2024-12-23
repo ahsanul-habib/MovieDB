@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tailwatch": "tailwindcss -i ./styles/input.css -o ./app/globals.css --watch"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

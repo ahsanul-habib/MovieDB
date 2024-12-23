@@ -12,7 +12,6 @@ export async function GET(){
 
     if(movieData.status===200){
         const data=await movieData.json();
-        console.log(data);
         return new Response(data,{
             headers: {
                 'Content-Type': 'application/json'

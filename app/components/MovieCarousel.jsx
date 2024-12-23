@@ -13,7 +13,11 @@ const MovieCarousel = ({ title, movieList }) => {
           >
             <Link href={`/movie/${movie.id}`}>
               <Image
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                src={
+                  movie?.poster_path
+                    ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                    : "/placeholder.jpg"
+                }
                 height={500}
                 width={300}
                 alt={movie.id}
